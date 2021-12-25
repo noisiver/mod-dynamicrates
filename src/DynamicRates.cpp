@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "ScriptMgr.h"
 
-uint32 multiplier[3];
+float multiplier[3];
 
 class DynamicRatesPlayer : public PlayerScript
 {
@@ -49,9 +49,9 @@ class DynamicRatesWorld : WorldScript
 
         void OnAfterConfigLoad(bool /*reload*/) override
         {
-            multiplier[0] = sConfigMgr->GetOption<int32>("DynamicRate.Level.1-59", 3);
-            multiplier[1] = sConfigMgr->GetOption<int32>("DynamicRate.Level.60-69", 2);
-            multiplier[2] = sConfigMgr->GetOption<int32>("DynamicRate.Level.70-79", 1);
+            multiplier[0] = sConfigMgr->GetOption<float>("DynamicRate.Level.1-59", 3);
+            multiplier[1] = sConfigMgr->GetOption<float>("DynamicRate.Level.60-69", 2);
+            multiplier[2] = sConfigMgr->GetOption<float>("DynamicRate.Level.70-79", 1);
         }
 };
 
