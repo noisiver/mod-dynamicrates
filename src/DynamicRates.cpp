@@ -2,8 +2,7 @@
 #include "Player.h"
 #include "ScriptMgr.h"
 
-uint32 multiplierExperience[3];
-uint32 multiplierReputation[3];
+uint32 multiplier[3];
 
 class DynamicRatesPlayer : public PlayerScript
 {
@@ -14,15 +13,15 @@ class DynamicRatesPlayer : public PlayerScript
         {
             if (player->getLevel() < 60)
             {
-                amount *= multiplierExperience[0];
+                amount *= multiplier[0];
             }
             else if (player->getLevel() < 70)
             {
-                amount *= multiplierExperience[1];
+                amount *= multiplier[1];
             }
             else if (player->getLevel() < 80)
             {
-                amount *= multiplierExperience[2];
+                amount *= multiplier[2];
             }
         }
 
@@ -30,15 +29,15 @@ class DynamicRatesPlayer : public PlayerScript
         {
             if (player->getLevel() < 60)
             {
-                standing *= multiplierReputation[0];
+                standing *= multiplier[0];
             }
             else if (player->getLevel() < 70)
             {
-                standing *= multiplierReputation[1];
+                standing *= multiplier[1];
             }
             else if (player->getLevel() < 80)
             {
-                standing *= multiplierReputation[2];
+                standing *= multiplier[2];
             }
         }
 };
@@ -50,13 +49,9 @@ class DynamicRatesWorld : WorldScript
 
         void OnAfterConfigLoad(bool /*reload*/) override
         {
-            multiplierExperience[0] = sConfigMgr->GetOption<int32>("DynamicRate.Experience.1-59", 3);
-            multiplierExperience[1] = sConfigMgr->GetOption<int32>("DynamicRate.Experience.60-69", 2);
-            multiplierExperience[2] = sConfigMgr->GetOption<int32>("DynamicRate.Experience.70-79", 1);
-
-            multiplierReputation[0] = sConfigMgr->GetOption<int32>("DynamicRate.Reputation.1-59", 3);
-            multiplierReputation[1] = sConfigMgr->GetOption<int32>("DynamicRate.Reputation.60-69", 2);
-            multiplierReputation[2] = sConfigMgr->GetOption<int32>("DynamicRate.Reputation.70-79", 1);
+            multiplier[0] = sConfigMgr->GetOption<int32>("DynamicRate.Level.1-59", 3);
+            multiplier[1] = sConfigMgr->GetOption<int32>("DynamicRate.Level.60-69", 2);
+            multiplier[2] = sConfigMgr->GetOption<int32>("DynamicRate.Level.70-79", 1);
         }
 };
 
