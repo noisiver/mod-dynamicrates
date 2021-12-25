@@ -1,0 +1,25 @@
+[worldserver]
+
+###
+# Multiplier for experience
+# Level 1 to 60
+DynamicRate.Experience.1-60 = 3
+
+# Level 61 to 70
+DynamicRate.Experience.61-70 = 2
+
+# Level 71 to 80
+DynamicRate.Experience.71-80 = 1
+###
+
+###
+# Multiplier for reputation
+# Level 1 to 60
+DynamicRate.Reputation.1-60 = 3
+
+# Level 61 to 70
+DynamicRate.Reputation.61-70 = 2
+
+# Level 71 to 80
+DynamicRate.Reputation.71-80 = 1
+###
