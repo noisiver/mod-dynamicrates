@@ -1,13 +1,48 @@
 [worldserver]
 
-###
-# Multiplier for experience and reputation
-# Level 1 to 59
-DynamicRate.Level.1-59 = 3
+##
+# Show the player information when receiving additional money from loot and quests
+DynamicRates.ShowInfo = 0
+##
 
-# Level 60 to 69
-DynamicRate.Level.60-69 = 2
+##
+# Multipliers for level 1 to 59
+#
+# Experience
+DynamicRates.Level.1-59.Experience = 1.0
+#
+# Reputation
+DynamicRates.Level.1-59.Reputation = 1.0
+#
+# Money looted and earned from quests
+DynamicRates.Level.1-59.Money = 1.0
+#
+##
 
-# Level 70 to 79
-DynamicRate.Level.70-79 = 1
-###
+##
+# Multipliers for level 60 to 69
+#
+# Experience
+DynamicRates.Level.60-69.Experience = 1.0
+#
+# Reputation
+DynamicRates.Level.60-69.Reputation = 1.0
+#
+# Money looted and earned from quests
+DynamicRates.Level.60-69.Money = 1.0
+#
+##
+
+##
+# Multipliers for level 70 to 79
+#
+# Experience
+DynamicRates.Level.70-79.Experience = 1.0
+#
+# Reputation
+DynamicRates.Level.70-79.Reputation = 1.0
+#
+# Money looted and earned from quests
+DynamicRates.Level.70-79.Money = 1.0
+#
+##
