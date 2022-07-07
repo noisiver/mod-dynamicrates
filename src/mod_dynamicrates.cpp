@@ -103,9 +103,9 @@ private:
         uint32 copper = (money % GOLD) % SILVER;
         std::string info;
 
-        if (money < 100)
+        if (money < SILVER)
             info = Acore::StringFormat("You receive an additional %i copper.", copper);
-        else if (money < 10000)
+        else if (money < GOLD)
             info = Acore::StringFormat("You receive an additional %i silver, %i copper.", silver, copper);
         else
             info = Acore::StringFormat("You receive an additional %i gold, %i silver, %i copper.", gold, silver, copper);
@@ -199,9 +199,9 @@ private:
         uint32 copper = (money % GOLD) % SILVER;
         std::string info;
 
-        if (money < 100)
+        if (money < SILVER)
             info = Acore::StringFormat("You receive an additional %i copper.", copper);
-        else if (money < 10000)
+        else if (money < GOLD)
             info = Acore::StringFormat("You receive an additional %i silver, %i copper.", silver, copper);
         else
             info = Acore::StringFormat("You receive an additional %i gold, %i silver, %i copper.", gold, silver, copper);
