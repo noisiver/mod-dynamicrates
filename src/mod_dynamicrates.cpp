@@ -29,17 +29,17 @@ public:
         if (playerLevel < 60)
         {
             if (dynamicExperienceRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                amount = amount * dynamicExperienceRate[DYNAMIC_RANGE_1_59];
+                amount = round(amount * dynamicExperienceRate[DYNAMIC_RANGE_1_59]);
         }
         else if (playerLevel < 70)
         {
             if (dynamicExperienceRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                amount = amount * dynamicExperienceRate[DYNAMIC_RANGE_60_69];
+                amount = round(amount * dynamicExperienceRate[DYNAMIC_RANGE_60_69]);
         }
         else if (playerLevel < 80)
         {
             if (dynamicExperienceRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                amount = amount * dynamicExperienceRate[DYNAMIC_RANGE_70_79];
+                amount = round(amount * dynamicExperienceRate[DYNAMIC_RANGE_70_79]);
         }
     }
 
@@ -49,17 +49,17 @@ public:
         if (playerLevel < 60)
         {
             if (dynamicReputationRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                standing = standing * dynamicReputationRate[DYNAMIC_RANGE_1_59];
+                standing = round(standing * dynamicReputationRate[DYNAMIC_RANGE_1_59]);
         }
         else if (playerLevel < 70)
         {
             if (dynamicReputationRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                standing = standing * dynamicReputationRate[DYNAMIC_RANGE_60_69];
+                standing = round(standing * dynamicReputationRate[DYNAMIC_RANGE_60_69]);
         }
         else if (playerLevel < 80)
         {
             if (dynamicReputationRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                standing = standing * dynamicReputationRate[DYNAMIC_RANGE_70_79];
+                standing = round(standing * dynamicReputationRate[DYNAMIC_RANGE_70_79]);
         }
 
         return true;
@@ -74,17 +74,17 @@ public:
         if (playerLevel < 60)
         {
             if (dynamicMoneyRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                rewardMoney = (baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - baseMoney;
+                rewardMoney = round((baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - baseMoney);
         }
         else if (playerLevel < 70)
         {
             if (dynamicMoneyRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                rewardMoney = (baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - baseMoney;
+                rewardMoney = round((baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - baseMoney);
         }
         else if (playerLevel < 80)
         {
             if (dynamicMoneyRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                rewardMoney = (baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - baseMoney;
+                rewardMoney = round((baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - baseMoney);
         }
 
         if (rewardMoney > 0)
@@ -149,17 +149,17 @@ public:
         if (playerLevel < 60)
         {
             if (dynamicMoneyRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                extraGold = (gold * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - gold;
+                extraGold = round((gold * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - gold);
         }
         else if (playerLevel < 70)
         {
             if (dynamicMoneyRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                extraGold = (gold * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - gold;
+                extraGold = round((gold * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - gold);
         }
         else if (playerLevel < 80)
         {
             if (dynamicMoneyRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                extraGold = (gold * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - gold;
+                extraGold = round((gold * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - gold);
         }
 
         if (extraGold > 0)
