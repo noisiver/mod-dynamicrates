@@ -164,22 +164,26 @@ public:
 
         if (extraGold > 0)
         {
-            player->ModifyMoney(extraGold);
-
-            if (dynamicRatesShowInfo)
-                SendDynamicRateInfo(player, extraGold);
-
             if (Group* group = player->GetGroup())
             {
+                uint32 membersInRange = 0;
                 for (GroupReference* groupRef = group->GetFirstMember(); groupRef != nullptr; groupRef = groupRef->next())
                 {
                     if (Player* member = groupRef->GetSource())
                     {
-                        if (member->IsInMap(player) && member->IsAtLootRewardDistance(player))
-                        {
-                            if (member == player)
-                                continue;
+                        if (member->IsAtLootRewardDistance(player))
+                            membersInRange++;
+                    }
+                }
 
+                extraGold /= membersInRange;
+
+                for (GroupReference* groupRef = group->GetFirstMember(); groupRef != nullptr; groupRef = groupRef->next())
+                {
+                    if (Player* member = groupRef->GetSource())
+                    {
+                        if (member->IsAtLootRewardDistance(player))
+                        {
                             member->ModifyMoney(extraGold);
 
                             if (dynamicRatesShowInfo)
@@ -187,6 +191,13 @@ public:
                         }
                     }
                 }
+            }
+            else
+            {
+                player->ModifyMoney(extraGold);
+
+                if (dynamicRatesShowInfo)
+                    SendDynamicRateInfo(player, extraGold);
             }
         }
     }
