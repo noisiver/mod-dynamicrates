@@ -12,9 +12,9 @@ enum DynamicRateRange
     DYNAMIC_RANGE_MAX   = 3,
 };
 
-float dynamicExperienceRate[DYNAMIC_RANGE_MAX];
-float dynamicReputationRate[DYNAMIC_RANGE_MAX];
-float dynamicMoneyRate[DYNAMIC_RANGE_MAX];
+uint32 dynamicExperienceRate[DYNAMIC_RANGE_MAX];
+uint32 dynamicReputationRate[DYNAMIC_RANGE_MAX];
+uint32 dynamicMoneyRate[DYNAMIC_RANGE_MAX];
 
 bool dynamicRatesShowInfo;
 
@@ -28,18 +28,18 @@ public:
         uint32 playerLevel = player->getLevel();
         if (playerLevel < 60)
         {
-            if (dynamicExperienceRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                amount = round(amount * dynamicExperienceRate[DYNAMIC_RANGE_1_59]);
+            if (dynamicExperienceRate[DYNAMIC_RANGE_1_59] > 1)
+                amount = amount * dynamicExperienceRate[DYNAMIC_RANGE_1_59];
         }
         else if (playerLevel < 70)
         {
-            if (dynamicExperienceRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                amount = round(amount * dynamicExperienceRate[DYNAMIC_RANGE_60_69]);
+            if (dynamicExperienceRate[DYNAMIC_RANGE_60_69] > 1)
+                amount = amount * dynamicExperienceRate[DYNAMIC_RANGE_60_69];
         }
         else if (playerLevel < 80)
         {
-            if (dynamicExperienceRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                amount = round(amount * dynamicExperienceRate[DYNAMIC_RANGE_70_79]);
+            if (dynamicExperienceRate[DYNAMIC_RANGE_70_79] > 1)
+                amount = amount * dynamicExperienceRate[DYNAMIC_RANGE_70_79];
         }
     }
 
@@ -48,18 +48,18 @@ public:
         uint32 playerLevel = player->getLevel();
         if (playerLevel < 60)
         {
-            if (dynamicReputationRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                standing = round(standing * dynamicReputationRate[DYNAMIC_RANGE_1_59]);
+            if (dynamicReputationRate[DYNAMIC_RANGE_1_59] > 1)
+                standing = standing * dynamicReputationRate[DYNAMIC_RANGE_1_59];
         }
         else if (playerLevel < 70)
         {
-            if (dynamicReputationRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                standing = round(standing * dynamicReputationRate[DYNAMIC_RANGE_60_69]);
+            if (dynamicReputationRate[DYNAMIC_RANGE_60_69] > 1)
+                standing = standing * dynamicReputationRate[DYNAMIC_RANGE_60_69];
         }
         else if (playerLevel < 80)
         {
-            if (dynamicReputationRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                standing = round(standing * dynamicReputationRate[DYNAMIC_RANGE_70_79]);
+            if (dynamicReputationRate[DYNAMIC_RANGE_70_79] > 1)
+                standing = standing * dynamicReputationRate[DYNAMIC_RANGE_70_79];
         }
 
         return true;
@@ -73,18 +73,18 @@ public:
 
         if (playerLevel < 60)
         {
-            if (dynamicMoneyRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                rewardMoney = round((baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - baseMoney);
+            if (dynamicMoneyRate[DYNAMIC_RANGE_1_59] > 1)
+                rewardMoney = (baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - baseMoney;
         }
         else if (playerLevel < 70)
         {
-            if (dynamicMoneyRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                rewardMoney = round((baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - baseMoney);
+            if (dynamicMoneyRate[DYNAMIC_RANGE_60_69] > 1)
+                rewardMoney = (baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - baseMoney;
         }
         else if (playerLevel < 80)
         {
-            if (dynamicMoneyRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                rewardMoney = round((baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - baseMoney);
+            if (dynamicMoneyRate[DYNAMIC_RANGE_70_79] > 1)
+                rewardMoney = (baseMoney * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - baseMoney;
         }
 
         if (rewardMoney > 0)
@@ -121,17 +121,17 @@ public:
 
     void OnAfterConfigLoad(bool /*reload*/) override
     {
-        dynamicExperienceRate[DYNAMIC_RANGE_1_59] = sConfigMgr->GetOption<float>("DynamicRates.Level.1-59.Experience", 1.0f);
-        dynamicReputationRate[DYNAMIC_RANGE_1_59] = sConfigMgr->GetOption<float>("DynamicRates.Level.1-59.Reputation", 1.0f);
-        dynamicMoneyRate[DYNAMIC_RANGE_1_59] = sConfigMgr->GetOption<float>("DynamicRates.Level.1-59.Money", 1.0f);
+        dynamicExperienceRate[DYNAMIC_RANGE_1_59] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.1-59.Experience", 1);
+        dynamicReputationRate[DYNAMIC_RANGE_1_59] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.1-59.Reputation", 1);
+        dynamicMoneyRate[DYNAMIC_RANGE_1_59] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.1-59.Money", 1);
 
-        dynamicExperienceRate[DYNAMIC_RANGE_60_69] = sConfigMgr->GetOption<float>("DynamicRates.Level.60-69.Experience", 1.0f);
-        dynamicReputationRate[DYNAMIC_RANGE_60_69] = sConfigMgr->GetOption<float>("DynamicRates.Level.60-69.Reputation", 1.0f);
-        dynamicMoneyRate[DYNAMIC_RANGE_60_69] = sConfigMgr->GetOption<float>("DynamicRates.Level.60-69.Money", 1.0f);
+        dynamicExperienceRate[DYNAMIC_RANGE_60_69] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.60-69.Experience", 1);
+        dynamicReputationRate[DYNAMIC_RANGE_60_69] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.60-69.Reputation", 1);
+        dynamicMoneyRate[DYNAMIC_RANGE_60_69] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.60-69.Money", 1);
 
-        dynamicExperienceRate[DYNAMIC_RANGE_70_79] = sConfigMgr->GetOption<float>("DynamicRates.Level.70-79.Experience", 1.0f);
-        dynamicReputationRate[DYNAMIC_RANGE_70_79] = sConfigMgr->GetOption<float>("DynamicRates.Level.70-79.Reputation", 1.0f);
-        dynamicMoneyRate[DYNAMIC_RANGE_70_79] = sConfigMgr->GetOption<float>("DynamicRates.Level.70-79.Money", 1.0f);
+        dynamicExperienceRate[DYNAMIC_RANGE_70_79] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.70-79.Experience", 1);
+        dynamicReputationRate[DYNAMIC_RANGE_70_79] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.70-79.Reputation", 1);
+        dynamicMoneyRate[DYNAMIC_RANGE_70_79] = sConfigMgr->GetOption<uint32>("DynamicRates.Level.70-79.Money", 1);
 
         dynamicRatesShowInfo = sConfigMgr->GetOption<bool>("DynamicRates.ShowInfo", false);
     }
@@ -148,18 +148,18 @@ public:
         uint32 extraGold = 0;
         if (playerLevel < 60)
         {
-            if (dynamicMoneyRate[DYNAMIC_RANGE_1_59] > 1.0f)
-                extraGold = round((gold * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - gold);
+            if (dynamicMoneyRate[DYNAMIC_RANGE_1_59] > 1)
+                extraGold = (gold * dynamicMoneyRate[DYNAMIC_RANGE_1_59]) - gold;
         }
         else if (playerLevel < 70)
         {
-            if (dynamicMoneyRate[DYNAMIC_RANGE_60_69] > 1.0f)
-                extraGold = round((gold * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - gold);
+            if (dynamicMoneyRate[DYNAMIC_RANGE_60_69] > 1)
+                extraGold = (gold * dynamicMoneyRate[DYNAMIC_RANGE_60_69]) - gold;
         }
         else if (playerLevel < 80)
         {
-            if (dynamicMoneyRate[DYNAMIC_RANGE_70_79] > 1.0f)
-                extraGold = round((gold * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - gold);
+            if (dynamicMoneyRate[DYNAMIC_RANGE_70_79] > 1)
+                extraGold = (gold * dynamicMoneyRate[DYNAMIC_RANGE_70_79]) - gold;
         }
 
         if (extraGold > 0)
